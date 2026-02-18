@@ -91,46 +91,6 @@ Queries are stored as JSONL, one JSON object per line:
 
 ---
 
-## Loading Datasets
-
-### Built-in sample (30 queries)
-
-```bash
-uv run standard-benchmark dataset sample --output data/queries.jsonl
-```
-
-### From CSV
-
-```bash
-uv run standard-benchmark dataset load --source csv \
-  --path queries.csv --text-column question \
-  --output data/queries.jsonl
-```
-
-### From JSONL
-
-```bash
-uv run standard-benchmark dataset load --source jsonl \
-  --path queries.jsonl --output data/queries.jsonl
-```
-
----
-
-## Pipeline Overview
-
-```
-Dataset → Search → Evaluate → Analyze
-```
-
-| Stage | Command | Description |
-|-------|---------|-------------|
-| **Dataset** | `dataset load` / `dataset sample` | Load queries from CSV, JSONL, or samples |
-| **Search** | `search run` | Execute queries across Linkup, Exa, Tavily, Perplexity |
-| **Evaluate** | `evaluate run` | Score responses using Ragas, HuggingFace Judges, BERTScore |
-| **Analyze** | `analyze stats` / `analyze dashboard` | View statistics, launch interactive dashboard |
-
----
-
 ## Evaluation System
 
 ### Three Independent Scoring Systems
@@ -176,29 +136,9 @@ All scores are normalized to a **1-10 scale**.
 
 Each metric is cached individually (7-day TTL). Adding new judges later won't invalidate existing cached metrics — only missing ones trigger API calls.
 
----
+### Customizing Weights
 
-## Configuration
-
-### API Keys (`.env`)
-
-```bash
-cp .env.example .env
-```
-
-Required keys depend on which search systems you want to benchmark:
-
-```bash
-LINKUP_API_KEY=...       # For Linkup searches
-EXA_API_KEY=...          # For Exa searches
-TAVILY_API_KEY=...       # For Tavily searches
-PERPLEXITY_API_KEY=...   # For Perplexity searches
-OPENAI_API_KEY=...       # For LLM-based evaluation (Ragas/HuggingFace judges)
-```
-
-### Evaluation Weights (`config/evaluation_config.yaml`)
-
-Customize scoring weights for each evaluation system.
+Edit `config/evaluation_config.yaml` to adjust scoring weights for each evaluation system.
 
 ---
 
