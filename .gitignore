@@ -1,0 +1,55 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+venv/
+env/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+
+# Data
+data/
+data_archive/
+
+# Logs
+*.log
+logs/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# MacOS
+.DS_Store
+
+# Cache
+.cache/
+*.cache
+.ruff_cache/
+.mypy_cache/
+
+# Model files
+models/
+*.pt
+*.pth
+*.pkl
+
+# Temporary files
+*.tmp
+temp/

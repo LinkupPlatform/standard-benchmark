@@ -1,0 +1,24 @@
+# Three independent scoring systems (not combined)
+# Each system produces a score from 1-10
+
+ragas_weights:
+  faithfulness: 0.45
+  completeness: 0.45
+  source_quality: 0.1
+
+huggingface_weights:
+  correctness_classifier: 0.45  # PollMultihopCorrectness (binary classifier: True/False)
+  correctness_grader: 0.45  # PrometheusAbsoluteCoarseCorrectness (1-5 scale)
+  response_quality: 0.1  # MTBenchChatBotResponseQuality (1-10 scale)
+
+automated_weights:
+  bertscore_relevance: 0.55   # BERTScore between query and response
+  bertscore_faithfulness: 0.45  # BERTScore between response and sources
+  # Note: entity_coverage and unique_domains are computed but not included in score (descriptive only)
+
+thresholds:
+  deduplication_similarity: 0.92
+  min_query_length: 20
+  max_query_length: 150
+  min_outperformance_margin: 2.0
+

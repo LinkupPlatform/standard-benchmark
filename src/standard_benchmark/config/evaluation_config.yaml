@@ -1,0 +1,15 @@
+weights:
+  ragas: 0.7  # Custom LLM evaluation metrics (faithfulness, relevance, completeness, source_quality)
+  automated: 0.3  # Automated metrics (BERTScore, entity coverage, source diversity)
+
+automated_weights:
+  bertscore: 0.3
+  entity_coverage: 0.3
+  unique_domains: 0.4
+
+thresholds:
+  deduplication_similarity: 0.92
+  min_query_length: 20
+  max_query_length: 150
+  min_outperformance_margin: 2.0
+
