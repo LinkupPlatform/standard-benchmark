@@ -100,6 +100,11 @@ ignore_missing_imports = true
 [tool.hatch.metadata]
 allow-direct-references = true
 
+[tool.uv]
+exclude-newer = "2 weeks" # Reduce risks of supply chain attacks
+exclude-newer-package = { certifi = "2026-10-21T00:00:00Z" } # HACK: this is a temporary workaround and can be removed 2 weeks after this date
+required-version = ">=0.13.5,<0.14.0"
+
 [dependency-groups]
 dev = [
     "black>=23.9.0",
